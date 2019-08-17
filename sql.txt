@@ -1,0 +1,61 @@
+CREATE TABLE `yxmusic`.`student` (
+  `idstudent` INT NOT NULL,
+  `student_name` VARCHAR(45) NOT NULL,
+  `level` INT NULL,
+  `age` INT NULL,
+  PRIMARY KEY (`idstudent`));
+
+CREATE TABLE `yxmusic`.`teacher` (
+  `id` INT NOT NULL,
+  `teacher_name` VARCHAR(45) NOT NULL,
+  PRIMARY KEY (`id`));
+ALTER TABLE `yxmusic`.`teacher` 
+CHANGE COLUMN `id` `id` INT(11) NOT NULL AUTO_INCREMENT ;
+ALTER TABLE `yxmusic`.`student` 
+CHANGE COLUMN `idstudent` `id` INT(11) NOT NULL AUTO_INCREMENT ;
+CREATE TABLE `yxmusic`.`student_paid` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `date` DATETIME NOT NULL,
+  `number_of_class` INT NOT NULL,
+  `amount` DECIMAL(7,2) NOT NULL,
+  `student` INT NULL,
+  PRIMARY KEY (`id`),
+  INDEX `student_idx` (`student` ASC) VISIBLE,
+  CONSTRAINT `student`
+    FOREIGN KEY (`student`)
+    REFERENCES `yxmusic`.`student` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION);
+
+CREATE TABLE `yxmusic`.`teacher_salary` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `date` DATETIME NOT NULL,
+  `amount` DECIMAL(7,2) NOT NULL,
+  `teacher` INT NULL,
+  PRIMARY KEY (`id`),
+  INDEX `teacher_idx` (`teacher` ASC) VISIBLE,
+  CONSTRAINT `teacher`
+    FOREIGN KEY (`teacher`)
+    REFERENCES `yxmusic`.`teacher` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION);
+
+CREATE TABLE `yxmusic`.`income` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `amount` DECIMAL(8,2) NOT NULL,
+  `date` DATETIME NOT NULL,
+  `type` VARCHAR(45) NULL,
+  PRIMARY KEY (`id`));
+
+ALTER TAALTER TABLE `yxmusic`.`student` 
+ADD CONSTRAINT `teacherincharge`
+  FOREIGN KEY (`teacher`)
+  REFERENCES `yxmusic`.`teacher` (`id`)
+  ON DELETE NO ACTION
+  ON UPDATE NO ACTION;
+ALTER TABLE `yxmusic`.`student` 
+ADD CONSTRAINT `teacherincharge`
+  FOREIGN KEY (`teacher`)
+  REFERENCES `yxmusic`.`teacher` (`id`)
+  ON DELETE NO ACTION
+  ON UPDATE NO ACTION;

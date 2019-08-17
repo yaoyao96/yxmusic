@@ -25,7 +25,7 @@ SECRET_KEY = 'z4c@@a5g#2m)5**en$0wlsdtnsgrba!6at2x$ym4@!$p8=8nob'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'mysite.apps.MysiteConfig'
 ]
 
 MIDDLEWARE = [
@@ -75,8 +76,14 @@ WSGI_APPLICATION = 'yxmusic.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        # 'ENGINE': 'django.db.backends.sqlite3',
+        # 'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME':'yxmusic',
+        'USER':'root',
+        'PASSWORD':'password',
+        'HOST':'127.0.0.1',
+        'PORT':'3306'
     }
 }
 
