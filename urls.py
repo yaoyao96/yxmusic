@@ -20,6 +20,11 @@ from mysite import views
 
 router = routers.DefaultRouter()
 router.register(r'students', views.StudentViewSet)
+router.register(r'teachers', views.TeacherViewSet)
+router.register(r'studentpaid', views.StudentPaidViewSet)
+router.register(r'teachersalary', views.TeacherSalaryViewSet)
+router.register(r'income', views.IncomeViewSet)
+router.register(r'training', views.TrainingViewSet)
 
 urlpatterns = [
     path('admin/', admin.site.urls),

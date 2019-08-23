@@ -17,8 +17,6 @@ class Student(models.Model):
     remarks = models.CharField(max_length=200, blank=True, null=True)
     def __str__(self):
         return self.name
-    def age(self):
-        return datetime.date.year - self.date_of_birth.year
     teacher = models.ForeignKey(Teacher, null=True, on_delete=models.SET_NULL)
 
 class StudentPaid(models.Model):
