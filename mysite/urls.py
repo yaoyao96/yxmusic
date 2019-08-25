@@ -8,6 +8,7 @@ urlpatterns = [
     path('salary/<int:tid>/', views.salaryListByTeacherId),
     path('salary/<int:tid>/<int:y>/', views.salaryListByTeacherIdAndYear),
     path('paid/<int:sid>/', views.paidListByStudentId),
-    path('training/<int:sid>/', views.trainingListByStudentId),
+    path('traininglist/<int:sid>/', views.trainingListByStudentId),
+    path('paidperiod/', views.paidPeriod),
 ]
 

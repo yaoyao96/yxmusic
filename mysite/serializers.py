@@ -46,3 +46,14 @@ class TrainingListSerializer(serializers.ModelSerializer):
     class Meta:
         model = Training    
         fields = ['id','number_of_month','amount','create_time','student']
+
+class paidPeriodSerializer(serializers.Serializer):
+    id = serializers.IntegerField()
+    name = serializers.CharField()
+    sum_of_paid = serializers.DecimalField(9,2)
+    latest_paid_amount = serializers.DecimalField(7,2)
+    latest_paid_course = serializers.IntegerField()
+    latest_paid_time = serializers.DateField()
+    duration = serializers.IntegerField()
+    teacher = serializers.CharField()
+    
