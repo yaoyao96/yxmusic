@@ -152,7 +152,7 @@ def paidPeriod(request):
         else:
             latest_paid_amount = 0
             latest_paid_course = 0
-            latest_paid_time = date(2000,1,1)
+            latest_paid_time = date(1,1,1)
         duration = (date.today() - latest_paid_time).days
         teacher = s.teacher.name
         pp= paidSum(id, name, sum_of_paid['amount__sum'], latest_paid_amount, latest_paid_course, latest_paid_time, duration, teacher)
